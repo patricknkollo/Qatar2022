@@ -85,7 +85,7 @@ public class JoueurServiceTest {
         Assertions.assertEquals(10, result.getDossard());
     }
 
-    @Order(4)
+    @Order(5)
     @Test
     void test_updateCountry2(){
         Mockito.when(repository.findById(1L)).thenReturn(Optional.of(joueur2));
@@ -95,7 +95,7 @@ public class JoueurServiceTest {
         Assertions.assertEquals(10, result.getDossard());
     }
 
-    @Order(5)
+    @Order(6)
     @Test
     void test_getCountryById(){
         ResponseEntity<Joueur> expected =  new ResponseEntity<>(joueur1, HttpStatus.OK);
@@ -104,7 +104,7 @@ public class JoueurServiceTest {
         Assertions.assertEquals(expected, result);
     }
 
-    @Order(5)
+    @Order(7)
     @Test
     void test_getCountryById2(){
         ResponseEntity<Joueur> expected =  new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

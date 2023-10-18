@@ -85,7 +85,7 @@ public class PaysServiceTest {
         Assertions.assertEquals(0, result.getCdms());
     }
 
-    @Order(4)
+    @Order(5)
     @Test
     void test_updateCountry2(){
         Mockito.when(repository.findById(1L)).thenReturn(Optional.of(pays2));
@@ -95,7 +95,7 @@ public class PaysServiceTest {
         Assertions.assertEquals(0, result.getCdms());
     }
 
-    @Order(5)
+    @Order(6)
     @Test
     void test_getCountryById(){
         ResponseEntity<Pays> expected =  new ResponseEntity<>(pays1, HttpStatus.OK);
@@ -104,7 +104,7 @@ public class PaysServiceTest {
         Assertions.assertEquals(expected, result);
     }
 
-    @Order(5)
+    @Order(7)
     @Test
     void test_getCountryById2(){
         ResponseEntity<Pays> expected =  new ResponseEntity<>(null, HttpStatus.NOT_FOUND);

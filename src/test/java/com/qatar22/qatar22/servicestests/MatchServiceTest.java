@@ -115,7 +115,7 @@ public class MatchServiceTest {
         Assertions.assertEquals(expected, result);
     }
 
-    @Order(5)
+    @Order(6)
     @Test
     void test_getCountryById2(){
         ResponseEntity<Match> expected =  new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
