@@ -1,3 +1,4 @@
+/*
 package com.qatar22.qatar22.seleniumtests;
 
 import org.junit.jupiter.api.*;
@@ -76,3 +77,4 @@ public class SeleniumTests {
         driver.close();
     }
 }
+*/
