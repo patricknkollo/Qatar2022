@@ -7,6 +7,12 @@ pipeline {
             nodejs 'nodeJS25'
         }
 
+        environment {
+                DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
+                IMAGE_NAME = "pnkollo/docker-springboot"
+                IMAGE_TAG = "latest"
+        }
+
         stages {
 
             stage('Test Docker') {
@@ -42,6 +48,30 @@ pipeline {
                         bat 'npm install'
                         bat 'npm run build'
                     }
+                }
+            }
+
+            stage('Build Docker Image') {
+                 steps {
+                     bat """
+                     docker build -t %IMAGE_NAME%:%IMAGE_TAG% .
+                     """
+                 }
+            }
+
+            stage('Docker Login') {
+                 steps {
+                     bat """
+                     echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
+                     """
+                 }
+            }
+
+            stage('Push Image to Docker Hub') {
+                steps {
+                       bat """
+                       docker push %IMAGE_NAME%:%IMAGE_TAG%
+                       """
                 }
             }
         }
