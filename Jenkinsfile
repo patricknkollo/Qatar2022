@@ -9,6 +9,12 @@ pipeline {
 
         stages {
 
+            stage('Test Docker') {
+                steps {
+                    bat 'docker ps'
+                }
+            }
+
             stage('Checkout Backend') {
                 steps {
                     checkout scm
