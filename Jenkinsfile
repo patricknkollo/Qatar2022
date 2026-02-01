@@ -51,6 +51,12 @@ pipeline {
                 }
             }
 
+            stage('Copy Frontend into Backend') {
+                steps {
+                    bat 'xcopy frontend\\dist\\qatar22 src\\main\\resources\\static /E /Y'
+                }
+            }
+
             stage('Build Docker Image') {
                  steps {
                      bat """
