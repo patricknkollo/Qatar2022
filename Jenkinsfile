@@ -53,7 +53,7 @@ pipeline {
 
             stage('Copy Frontend into Backend') {
                 steps {
-                    bat 'xcopy frontend\\dist\\qatar22 src\\main\\resources\\static /E /Y'
+                    bat 'xcopy frontend\\build src\\main\\resources\\static /E /Y /I'
                 }
             }
 
