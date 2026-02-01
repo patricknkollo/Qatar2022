@@ -8,7 +8,7 @@ pipeline {
         }
 
         environment {
-                DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
+                DOCKERHUB_CREDENTIALS = credentials('my-dockerhub-credentials')
                 IMAGE_NAME = "pnkollo/docker-springboot"
                 IMAGE_TAG = "latest"
         }
