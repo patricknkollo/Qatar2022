@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qatar22-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qatar22
+  template:
+    metadata:
+      labels:
+        app: qatar22
+    spec:
+      containers:
+        - name: qatar22
+          image: pnkollo/docker-springboot:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
