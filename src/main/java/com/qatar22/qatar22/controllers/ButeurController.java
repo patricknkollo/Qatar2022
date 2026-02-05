@@ -15,8 +15,8 @@ import java.util.List;
 
 @Controller
 @Component
-@RequestMapping(path = "/api/buteur/controller")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping(path = "/api/buteur/controller", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin(origins = "*")
 public class ButeurController {
 
   @Autowired

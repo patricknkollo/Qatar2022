@@ -3,6 +3,7 @@ package com.qatar22.qatar22.controllers;
 import com.qatar22.qatar22.entities.Pays;
 import com.qatar22.qatar22.services.PaysService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,8 @@ import java.util.List;
 
 @Component
 @Controller
-@RequestMapping(path = "/api/countries/controller")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping(path = "/api/countries/controller", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin(origins = "*")
 public class PaysController {
 
   @Autowired

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping(path = "/api/joueur/controller")
+@CrossOrigin(origins = "*")
+@RequestMapping(path = "/api/joueur/controller", produces = MediaType.APPLICATION_JSON_VALUE)
 @Controller
 public class JoueurController {
 

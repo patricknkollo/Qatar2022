@@ -16,8 +16,8 @@ import java.util.List;
 
 @Controller
 @Component
-@RequestMapping(path = "/api/referees/controller")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping(path = "/api/referees/controller", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin(origins = "*")
 public class ArbitreController {
 
   @Autowired

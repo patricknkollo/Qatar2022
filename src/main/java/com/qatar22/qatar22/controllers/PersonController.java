@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.*;
 import java.io.FileNotFoundException;
 import java.util.List;
 
-@RequestMapping(path = "/api/person/controller")
+@RequestMapping(path = "/api/person/controller", produces = MediaType.APPLICATION_JSON_VALUE)
 @Component
 @Controller
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class PersonController {
 
   @Autowired

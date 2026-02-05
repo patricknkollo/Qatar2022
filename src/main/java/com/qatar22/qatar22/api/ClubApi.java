@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @Component
 @RequestMapping(path = "/api/club/controller")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public interface ClubApi {
 
   @RequestMapping(path = "/clubs", method = RequestMethod.GET)
