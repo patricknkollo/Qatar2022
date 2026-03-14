@@ -1,3 +1,4 @@
+@Library("shared_library1")
 pipeline {
        agent any
 
@@ -81,6 +82,22 @@ pipeline {
                 }
             }
         }
+
+         stages {
+                  stage('Hello world') {
+                      steps {
+                              sh 'echo hello world from jenkinsfile'
+                      }
+                  }
+           }
+
+            stages {
+                     stage('Shared lib test') {
+                         steps {
+                                 helloWorld() ' from shared library'
+                         }
+                     }
+             }
 
         post {
             success {
