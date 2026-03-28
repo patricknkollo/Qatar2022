@@ -1,4 +1,4 @@
-@Library("shared_library1") _
+//@Library("shared_library1") _
 
 pipeline {
        agent any
@@ -114,7 +114,7 @@ pipeline {
         }
 }
 
-def buildKursnetBatchContainer(){
+/* def buildKursnetBatchContainer(){
     dir("kubernetes/container"){
         //build Batche-Image
         bat """
@@ -147,7 +147,7 @@ def deployKursnetBatchToK8s(){
               bat "kubectl apply -f service.yaml"
         }
     }
-}
+} */
 
 
 
