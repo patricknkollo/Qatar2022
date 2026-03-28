@@ -9,6 +9,10 @@ pipeline {
             nodejs 'nodeJS25'
         }
 
+        triggers {
+        cron(env.BRANCH_NAME == 'main' ? 'H 1 * * *' : '')
+        }
+
         environment {
                 DOCKERHUB_CREDENTIALS = credentials('my-dockerhub-credentials')
                 IMAGE_NAME = "pnkollo/docker-springboot"
@@ -84,7 +88,7 @@ pipeline {
             }
         }
 
-         stages {
+ /*         stages {
                   stage('Hello world') {
                       steps {
                               sh 'echo hello world from jenkinsfile'
@@ -99,7 +103,7 @@ pipeline {
                          }
                      }
              }
-
+ */
         post {
             success {
                 echo '✅ Backend + UI buildés avec succès'
@@ -109,3 +113,41 @@ pipeline {
             }
         }
 }
+
+def buildKursnetBatchContainer(){
+    dir("kubernetes/container"){
+        //build Batche-Image
+        bat """
+        docker build -t ${IMAGE_NAME} .
+        docker tag ${IMAGE_NAME}:${IMAGE_TAG}
+        """
+    }
+}
+
+
+def dockerPushBatchesImage() {
+    dir("kubernetes/container") {
+        script {
+            docker.withRegistry("https://index.io/v1/", DOCKERHUB_CREDENTIALS) {
+               bat """
+                  docker push ${IMAGE_NAME}
+                  docker tag ${IMAGE_NAME}:${IMAGE_TAG}
+               """
+            }
+        }
+    }
+}
+
+def deployKursnetBatchToK8s(){
+    dir("kubernetes/k8s"){
+        script{
+              //deploy den Kursneta-Batches
+              bat "kubectl apply -f deployment.yaml"
+              //Bau den Service des Kursneta-Batches
+              bat "kubectl apply -f service.yaml"
+        }
+    }
+}
+
+
+
