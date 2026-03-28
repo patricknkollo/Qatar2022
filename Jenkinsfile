@@ -63,13 +63,19 @@ pipeline {
                 }
             }
 
-            stage('Build Docker Image') {
+           /*  stage('Build Docker Image') {
                  steps {
                      bat """
                      docker build -t %IMAGE_NAME%:%IMAGE_TAG% .
                      """
                  }
-            }
+            } */
+
+             stage('Build Docker Image') {
+                 steps {
+                     buildKursnetBatchContainer()
+                 }
+             }
 
             stage('Docker Login') {
                  steps {
@@ -114,7 +120,7 @@ pipeline {
         }
 }
 
-/* def buildKursnetBatchContainer(){
+ def buildKursnetBatchContainer(){
     dir("kubernetes/container"){
         //build Batche-Image
         bat """
@@ -147,7 +153,7 @@ def deployKursnetBatchToK8s(){
               bat "kubectl apply -f service.yaml"
         }
     }
-} */
+}
 
 
 
