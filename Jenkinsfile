@@ -89,7 +89,7 @@ pipeline {
                  }
               }
 
-/*             stage('Docker Login') {
+/*         stage('Docker Login') {
                  steps {
                      bat """
                      echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
@@ -104,7 +104,7 @@ pipeline {
                        """
                 }
             }
-        }
+        
 
           stages {
                   stage('Hello world') {
@@ -134,7 +134,7 @@ pipeline {
 
  def buildKursnetBatchContainer(){
     dir("kubernetes/container"){
-    echo 'docker build !!!'
+         echo 'docker build !!!'
     }
         //build Batche-Image
         bat """
