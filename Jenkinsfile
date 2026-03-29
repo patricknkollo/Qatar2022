@@ -77,7 +77,19 @@ pipeline {
                  }
              }
 
-            stage('Docker Login') {
+              stage('push Docker Image') {
+                  steps {
+                     dockerPushBatchesImage()
+                  }
+              }
+
+              stage('deploy Docker Image') {
+                 steps {
+                    deployKursnetBatchToK8s()
+                 }
+              }
+
+/*             stage('Docker Login') {
                  steps {
                      bat """
                      echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
@@ -94,7 +106,7 @@ pipeline {
             }
         }
 
- /*         stages {
+          stages {
                   stage('Hello world') {
                       steps {
                               sh 'echo hello world from jenkinsfile'
