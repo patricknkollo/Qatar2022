@@ -139,7 +139,6 @@ pipeline {
         //build Batche-Image
         bat """
         docker build -t ${IMAGE_NAME} -f kubernetes/container/Dockerfile .
-        docker tag ${IMAGE_NAME}:${IMAGE_TAG}
         """
 }
 
@@ -150,7 +149,6 @@ def dockerPushBatchesImage() {
             docker.withRegistry("https://index.io/v1/", DOCKERHUB_CREDENTIALS) {
                bat """
                   docker push ${IMAGE_NAME}
-                  docker tag ${IMAGE_NAME}:${IMAGE_TAG}
                """
             }
         }
