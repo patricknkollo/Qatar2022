@@ -122,17 +122,18 @@ pipeline {
 
  def buildKursnetBatchContainer(){
     dir("kubernetes/container"){
+    echo 'docker build !!!'
+    }
         //build Batche-Image
         bat """
-        docker build -t ${IMAGE_NAME} .
+        docker build -t ${IMAGE_NAME} -f kubernetes/container/Dockerfile .
         docker tag ${IMAGE_NAME}:${IMAGE_TAG}
         """
-    }
 }
 
 
 def dockerPushBatchesImage() {
-    dir("kubernetes/container") {
+    dir(".") {
         script {
             docker.withRegistry("https://index.io/v1/", DOCKERHUB_CREDENTIALS) {
                bat """
