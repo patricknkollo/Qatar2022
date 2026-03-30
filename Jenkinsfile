@@ -81,6 +81,7 @@ pipeline {
                     deployKursnetBatchToK8s()
                  }
               }
+        }
 
         post {
             success {
