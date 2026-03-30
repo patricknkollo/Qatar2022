@@ -89,39 +89,6 @@ pipeline {
                  }
               }
 
-/*         stage('Docker Login') {
-                 steps {
-                     bat """
-                     echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
-                     """
-                 }
-            }
-
-            stage('Push Image to Docker Hub') {
-                steps {
-                       bat """
-                       docker push %IMAGE_NAME%:%IMAGE_TAG%
-                       """
-                }
-            }
-        
-
-          stages {
-                  stage('Hello world') {
-                      steps {
-                              sh 'echo hello world from jenkinsfile'
-                      }
-                  }
-           }
-
-            stages {
-                     stage('Shared lib test') {
-                         steps {
-                                 helloWorld() ' from shared library'
-                         }
-                     }
-             }
- */
         post {
             success {
                 echo '✅ Backend + UI buildés avec succès'
