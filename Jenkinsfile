@@ -132,6 +132,3 @@ def deployKursnetBatchToK8s(){
         }
     }
 }
-
-
-
