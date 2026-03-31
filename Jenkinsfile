@@ -72,6 +72,7 @@ pipeline {
 
               stage('push Docker Image') {
                   steps {
+                     dockerLogin()
                      dockerPushBatchesImage()
                   }
               }
@@ -101,6 +102,16 @@ pipeline {
         bat """
         docker build -t ${IMAGE_NAME} -f kubernetes/container/Dockerfile .
         """
+}
+
+def dockerLogin() {
+    dir(".") {
+        script {
+              bat """
+                echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
+              """
+        }
+    }
 }
 
 
