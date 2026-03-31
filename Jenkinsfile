@@ -72,7 +72,6 @@ pipeline {
 
               stage('push Docker Image') {
                   steps {
-                     dockerLogin()
                      dockerPushBatchesImage()
                   }
               }
@@ -104,25 +103,14 @@ pipeline {
         """
 }
 
-def dockerLogin() {
-    dir(".") {
-        script {
-              bat """
-                echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
-              """
-        }
-    }
-}
-
 
 def dockerPushBatchesImage() {
     dir(".") {
         script {
-            docker.withRegistry("https://index.io/v1/", DOCKERHUB_CREDENTIALS) {
                bat """
-                  docker push ${IMAGE_NAME}
+               echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
+               docker push ${IMAGE_NAME}
                """
-            }
         }
     }
 }
