@@ -96,11 +96,11 @@ pipeline {
  def buildKursnetBatchContainer(){
     dir("kubernetes/container"){
          echo 'docker build !!!'
+         //build Batche-Image
+         bat """
+         docker build --no-cache -t ${IMAGE_NAME}:${IMAGE_TAG} .
+         """
     }
-        //build Batche-Image
-        bat """
-        docker build -t ${IMAGE_NAME} -f kubernetes/container/Dockerfile .
-        """
 }
 
 
@@ -109,7 +109,7 @@ def dockerPushBatchesImage() {
         script {
                bat """
                echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
-               docker push ${IMAGE_NAME}
+               docker push ${IMAGE_NAME}:${IMAGE_TAG}
                """
         }
     }
