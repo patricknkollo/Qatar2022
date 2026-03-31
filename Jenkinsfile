@@ -94,7 +94,7 @@ pipeline {
 }
 
  def buildKursnetBatchContainer(){
-    dir("Qatar2022"){
+    dir("."){
          echo 'docker build !!!'
          //build Batche-Image
          bat """
