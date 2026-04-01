@@ -98,7 +98,7 @@ pipeline {
          echo 'docker build !!!'
          //build Batche-Image
          bat """
-         docker build -t ${IMAGE_NAME}:${IMAGE_TAG} -f Qatar2022/kubernetes/container/Dockerfile Qatar2022
+         docker build -t ${IMAGE_NAME}:${IMAGE_TAG} -f qatar22/kubernetes/container/Dockerfile qatar22
          """
     }
 }
