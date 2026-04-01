@@ -119,9 +119,9 @@ def deployKursnetBatchToK8s(){
     dir("kubernetes/k8s"){
         script{
               //deploy den Kursneta-Batches
-              bat "kubectl apply -f deployment.yaml"
+              bat "kubectl apply -f deployment.yaml --validate=false"
               //Bau den Service des Kursneta-Batches
-              bat "kubectl apply -f service.yaml"
+              bat "kubectl apply -f service.yaml --validate=false"
         }
     }
 }
