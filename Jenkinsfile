@@ -98,7 +98,7 @@ pipeline {
          echo 'docker build !!!'
          //build Batche-Image
          bat """
-         docker build --no-cache -t ${IMAGE_NAME}:${IMAGE_TAG} .
+         docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
          """
     }
 }
