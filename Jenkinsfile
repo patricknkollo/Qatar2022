@@ -1,4 +1,4 @@
-//@Library("shared_library1") _
+@Library("shared_library1") _
 
 pipeline {
        agent any
@@ -81,6 +81,12 @@ pipeline {
                     deployKursnetBatchToK8s()
                  }
               }
+
+               stage('shared library test') {
+                   steps {
+                      helloWorld()
+                   }
+                }
         }
 
         post {
