@@ -94,7 +94,7 @@ pipeline {
 }
 
  def buildKursnetBatchContainer(){
-    dir("."){
+    dir("kubernetes/container"){
          echo 'docker build !!!'
          //build Batche-Image
          bat """
@@ -105,7 +105,7 @@ pipeline {
 
 
 def dockerPushBatchesImage() {
-    dir(".") {
+    dir("kubernetes/container") {
         script {
                bat """
                echo %DOCKERHUB_CREDENTIALS_PSW% | docker login -u %DOCKERHUB_CREDENTIALS_USR% --password-stdin
