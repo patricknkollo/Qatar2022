@@ -94,11 +94,11 @@ pipeline {
 }
 
  def buildKursnetBatchContainer(){
-    dir("kubernetes/container"){
+    dir("."){
          echo 'docker build !!!'
          //build Batche-Image
          bat """
-         docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+         docker build -t ${IMAGE_NAME}:${IMAGE_TAG} -f kubernetes/container/Dockerfile .
          """
     }
 }
